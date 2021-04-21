@@ -1,0 +1,20 @@
+##含有##开头或结尾都是注释，含有$开头的后面是指令
+
+$ cd   或者  $cd ~                                             ##进入根目录对应的指令
+$ wget http://download.redis.io/releases/redis-6.2.1.tar.gz    ##redis版本号
+$ls -a                                                         ##查看根目录下会出现redis-6.2.1.tar.gz
+$ tar -xzf redis-6.2.1.tar.gz                                  ##解压安装包
+$ls -a                                                         ##此时redis-6.2.1目录出现在根目录下
+$cd ./redis-6.2.1                                              ##进入当前目录下的redis-6.2.1目录
+$make
+$cd ./src
+$ls -a                                                         ##发现src目录下没有redis-server文件
+
+##为什么src没有下没有redis-server文件，原因是很可能环境没有安装gcc指令,操作如下：
+$cd                                                            ##进入根目录，安装gcc指令
+$yum -y install gcc
+$cd /redis-6.2.1
+$make distclean                                                ##之前make出来的内容清理掉,重新make
+$make                                                          
+$cd ./src
+$ls -a                                                         ##出现redis-server
